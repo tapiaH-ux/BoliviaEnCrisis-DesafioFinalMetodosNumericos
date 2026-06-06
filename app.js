@@ -288,14 +288,28 @@ function runA(idx) {
     type:'bar',
     data:{
       labels: zones,
-      datasets:[
-        { label:'Abastecimiento real (ton/día)', data:x.map(v=>+v.toFixed(1)),
-          backgroundColor:[P.blueFill,P.goldFill,P.greenFill],
-          borderColor:[P.blue,P.gold,P.green], borderWidth:2, borderRadius:5 },
-        { label:'Demanda requerida (ton/día)', data:demand,
-          type:'line', borderColor:P.red, borderDash:[5,4], borderWidth:2,
-          pointRadius:6, pointBackgroundColor:P.red, fill:false },
-      ]
+     datasets:[
+       { 
+         label:'Abastecimiento real (ton/día)', 
+         // Multiplicamos por 10 el vector resultante de x únicamente para la escala visual del gráfico
+         data: x.map(v => +(v * 10).toFixed(1)), 
+         backgroundColor: [P.blueFill, P.goldFill, P.greenFill],
+         borderColor: [P.blue, P.gold, P.green], 
+         borderWidth: 2, 
+         borderRadius: 5 
+       },
+       { 
+         label:'Demanda requerida (ton/día)', 
+         data: demand,
+         type:'line', 
+         borderColor: P.red, 
+         borderDash: [5,4], 
+         borderWidth: 2,
+         pointRadius: 6, 
+         pointBackgroundColor: P.red, 
+         fill: false 
+       },
+     ]
     },
     options:{
       responsive:true,
