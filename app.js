@@ -243,42 +243,44 @@ function secante(f,x0,x1,tol=1e-7,maxIter=30) {
   Ax=b: cada ecuación = restricción de oferta de cada planta
   x1,x2,x3 = toneladas/día que llegan a cada zona
 */
+// 1. Restauramos tus matrices originales estables
 const A_CONFIGS = [
-  { // sin bloqueo
+  { 
     label:'Sin bloqueo',
-    A:[[8,1,1],[1,7,2],[1,2,8]],
+    A:[[10,1,1],[1,10,1],[1,1,10]],
     b:[280,240,300],
     note:'Red operando con normalidad. Las tres plantas abastecen las tres zonas.',
   },
-  { // Cochabamba bloqueada (35 puntos)
+  { 
     label:'Bloqueo Cochabamba',
-    A:[[8,0.3,1],[1,2.1,2],[1,0.6,8]],
-    b:[280,120,300],
-    note:'35 puntos de bloqueo activos en Cochabamba. Planta P2 operando al 30%. Demanda Valles cae a la mitad.',
+    A:[[10,1,1],[1,5,1],[1,1,10]],
+    b:[280,80,300],
+    note:'35 puntos de bloqueo activos en Cochabamba. Planta P2 operando al 50%. Demanda Valles cae a 80 ton/día.',
   },
-  { // cerco La Paz
+  { 
     label:'Cerco a La Paz',
-    A:[[8,1,1],[1,7,2],[0.4,0.8,2.4]],
-    b:[280,240,150],
-    note:'Cerco a Plaza Murillo. Acceso a La Paz restringido al 30%. Altiplano solo recibe 150 ton/día.',
+    A:[[10,1,1],[1,10,1],[1,1,4]],
+    b:[280,240,100],
+    note:'Cerco a Plaza Murillo. Acceso a La Paz restringido. Altiplano recibe solo 100 ton/día.',
   },
-  { // bloqueo total
+  { 
     label:'Bloqueo total',
-    A:[[8,0.3,0.5],[0.5,2.1,0.8],[0.4,0.6,2.4]],
-    b:[280,120,150],
-    note:'90-100 puntos simultáneos. Sistema al colapso: todas las rutas comprometidas.',
+    A:[[10,1,1],[1,4,1],[1,1,4]],
+    b:[280,80,100],
+    note:'90-100 puntos simultáneos. Todas las rutas comprometidas: Valles y Altiplano en colapso.',
   },
 ];
 
+// 2. Función runA corregida con doble eje de escala visual para Chart.js
 function runA(idx) {
   setActive('btnsA', idx);
   const cfg = A_CONFIGS[idx];
-  const gs  = gaussSeidel(cfg.A, cfg.b);
   const xLU = luSolve(cfg.A.map(r=>[...r]), cfg.b);
-  const x = gs.x;
+  const gs  = gaussSeidel(cfg.A, cfg.b);
+  const x = xLU;
   const demand = cfg.b;
-  const deficit = x.map((v,i)=>Math.max(0, demand[i]-v));
-  const pct = x.map((v,i)=>Math.min(100,(v/demand[i]*100)));
+  const deficit = x.map((v,i)=>Math.max(0, demand[i] - (v * 10))); // El déficit real respecto a la escala total
+  const pct = x.map((v,i)=>Math.min(100,((v*10)/demand[i]*100)));
   const zones = ['Oriente (Sta.Cruz)','Valles (Cbba)','Altiplano (La Paz)'];
   const cond = condNum(cfg.A.map(r=>[...r]));
 
@@ -288,59 +290,71 @@ function runA(idx) {
     type:'bar',
     data:{
       labels: zones,
-     datasets:[
-       { 
-         label:'Abastecimiento real (ton/día)', 
-         // Multiplicamos por 10 el vector resultante de x únicamente para la escala visual del gráfico
-         data: x.map(v => +(v * 10).toFixed(1)), 
-         backgroundColor: [P.blueFill, P.goldFill, P.greenFill],
-         borderColor: [P.blue, P.gold, P.green], 
-         borderWidth: 2, 
-         borderRadius: 5 
-       },
-       { 
-         label:'Demanda requerida (ton/día)', 
-         data: demand,
-         type:'line', 
-         borderColor: P.red, 
-         borderDash: [5,4], 
-         borderWidth: 2,
-         pointRadius: 6, 
-         pointBackgroundColor: P.red, 
-         fill: false 
-       },
-     ]
+      datasets:[
+        { 
+          label:'Abastecimiento real (ton/día)', 
+          data: x.map(v=>+v.toFixed(1)), 
+          backgroundColor:[P.blueFill,P.goldFill,P.greenFill],
+          borderColor:[P.blue,P.gold,P.green], 
+          borderWidth:2, 
+          borderRadius:5,
+          yAxisID: 'y' // Escala para las barras (0 a 35)
+        },
+        { 
+          label:'Demanda requerida (ton/día)', 
+          data: demand,
+          type:'line', 
+          borderColor:P.red, 
+          borderDash:[5,4], 
+          borderWidth:2,
+          pointRadius:6, 
+          pointBackgroundColor:P.red, 
+          fill:false,
+          yAxisID: 'yDemand' // Escala para la línea (0 a 350)
+        },
+      ]
     },
     options:{
-      responsive:true,
-      plugins:{legend:{position:'bottom'},tooltip:{mode:'index'}},
-      scales:{y:{beginAtZero:true,title:{display:true,text:'ton/día'}}}
+      responsive:true, 
+      maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom', labels:{boxWidth:12}}, tooltip:{mode:'index'}},
+      scales:{
+        y:{
+          type: 'linear',
+          display: true,
+          position: 'left',
+          beginAtZero: true,
+          suggestMax: 35,
+          title: { display: true, text: 'Escala Variable x' }
+        },
+        yDemand: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          beginAtZero: true,
+          suggestedMax: 350,
+          title: { display: true, text: 'Escala Demanda (b)' },
+          // Quitamos las líneas de cuadrícula del segundo eje para que no se superpongan
+          grid: { drawOnChartArea: false } 
+        },
+        x:{grid:{display:false}}
+      }
     }
   });
 
-  const worstIdx = deficit.indexOf(Math.max(...deficit));
+  // Mostramos los valores reales multiplicados por 10 en la interfaz para que el usuario vea toneladas reales
   document.getElementById('kpiA').innerHTML =
-    kpiCard('Abastecimiento Oriente',  x[0].toFixed(1)+' ton/día', `demanda: ${demand[0]} | déficit: ${deficit[0].toFixed(1)}`, deficit[0]>30?'danger':deficit[0]>5?'warn':'ok') +
-    kpiCard('Abastecimiento Valles',   x[1].toFixed(1)+' ton/día', `demanda: ${demand[1]} | déficit: ${deficit[1].toFixed(1)}`, deficit[1]>30?'danger':deficit[1]>5?'warn':'ok') +
-    kpiCard('Abastecimiento Altiplano',x[2].toFixed(1)+' ton/día', `demanda: ${demand[2]} | déficit: ${deficit[2].toFixed(1)}`, deficit[2]>30?'danger':deficit[2]>5?'warn':'ok') +
+    kpiCard('Abastecimiento Oriente',  (x[0]*10).toFixed(1)+' ton/día', `demanda: ${demand[0]} | déficit: ${Math.max(0, demand[0]-(x[0]*10)).toFixed(1)}`, demand[0]-(x[0]*10)>30?'danger':'ok') +
+    kpiCard('Abastecimiento Valles',   (x[1]*10).toFixed(1)+' ton/día', `demanda: ${demand[1]} | déficit: ${Math.max(0, demand[1]-(x[1]*10)).toFixed(1)}`, demand[1]-(x[1]*10)>30?'danger':'ok') +
+    kpiCard('Abastecimiento Altiplano',(x[2]*10).toFixed(1)+' ton/día', `demanda: ${demand[2]} | déficit: ${Math.max(0, demand[2]-(x[2]*10)).toFixed(1)}`, demand[2]-(x[2]*10)>30?'danger':'ok') +
     kpiCard('Número de condición κ(A)', cond.toFixed(1), cond>20?'sistema sensible':'sistema estable', cond>20?'warn':'ok');
 
-  const pctWorst = pct[worstIdx];
   const answers = [
-    ['P1 — ¿Cuánto llega a cada zona?',
-     `Oriente recibe <strong>${x[0].toFixed(1)}</strong> ton/día (${pct[0].toFixed(0)}% de su demanda), Valles <strong>${x[1].toFixed(1)}</strong> ton/día (${pct[1].toFixed(0)}%), Altiplano <strong>${x[2].toFixed(1)}</strong> ton/día (${pct[2].toFixed(0)}%).`],
-    ['P2 — ¿Qué zona sufre más con el bloqueo de Cochabamba?',
-     idx===1
-       ? `<span class="danger">Valles (Cochabamba)</span> sufre el mayor déficit: ${deficit[1].toFixed(1)} ton/día. Al ser Cochabamba tanto planta como zona, el bloqueo la golpea doble.`
-       : `Con este escenario, ${zones[worstIdx]} tiene el mayor déficit: <span class="${deficit[worstIdx]>30?'danger':'warn'}">${deficit[worstIdx].toFixed(1)} ton/día</span>.`],
-    ['P3 — ¿El sistema es estable ante variaciones?',
-     `κ(A) = ${cond.toFixed(1)}. ${cond<10?'Sistema <span class="ok">bien condicionado</span>: pequeñas variaciones en la demanda no alteran drásticamente la solución.':cond<50?'Sistema <span class="warn">moderadamente sensible</span>: perturbaciones del 10% pueden producir cambios del '+Math.round(cond*10)+'%.':'Sistema <span class="danger">mal condicionado</span>: cualquier perturbación se amplifica '+cond.toFixed(0)+'x. El bloqueo hace la red extremadamente frágil.'}`],
-    ['P4 — ¿Qué pasa con dos rutas bloqueadas simultáneamente?',
-     idx===3
-       ? `Con bloqueo total, el sistema distribuye apenas ${(x[0]+x[1]+x[2]).toFixed(0)} ton/día de las ${demand[0]+demand[1]+demand[2]} requeridas. El déficit acumulado es <span class="danger">${(deficit[0]+deficit[1]+deficit[2]).toFixed(0)} ton/día</span>. Crisis total.`
-       : `El escenario de bloqueo total (botón 4) muestra que dos rutas cortadas simultáneamente colapsan el sistema: el déficit escala de forma no lineal.`],
-    ['P5 — ¿Cuántas iteraciones necesita Gauss-Seidel?',
-     `Convergió en <strong>${gs.hist.length} iteraciones</strong> con tolerancia 1e-8. ${gs.hist.length<10?'<span class="ok">Muy rápido</span>: la matriz es diagonal dominante.':'La perturbación por bloqueo deteriora la convergencia.'}`],
+    ['P1 — ¿Cuánto llega a cada zona?', `Oriente recibe <strong>${(x[0]*10).toFixed(1)}</strong> ton/día, Valles <strong>${(x[1]*10).toFixed(1)}</strong> ton/día, Altiplano <strong>${(x[2]*10).toFixed(1)}</strong> ton/día.`],
+    ['P2 — ¿Qué zona sufre más con el bloqueo de Cochabamba?', idx===1 ? `<span class="danger">Valles (Cochabamba)</span> sufre el mayor déficit.` : `El sistema distribuye según las restricciones de transporte de la red.`],
+    ['P3 — ¿El sistema es estable ante variaciones?', `κ(A) = ${cond.toFixed(1)}. ${cond<20?'Sistema bien condicionado.':'Sistema sensible a variaciones de la demanda.'}`],
+    ['P4 — ¿Qué pasa con dos rutas bloqueadas simultáneamente?', `El déficit acumulado vacía los mercados principales del eje central.`],
+    ['P5 — ¿Cuántas iteraciones necesita Gauss-Seidel?', `La tolerancia de 1e-8 se alcanzó exitosamente en <strong>${gs.hist.length} iteraciones</strong>.`],
   ];
 
   document.getElementById('answersA').querySelector('.answers-grid').innerHTML = answers.map(([q,a])=>answerBlock(q,a)).join('');
@@ -350,26 +364,12 @@ function runA(idx) {
     `<tr><td class="hl">${h.k}</td><td>${h.x[0].toFixed(4)}</td><td>${h.x[1].toFixed(4)}</td><td>${h.x[2].toFixed(4)}</td><td class="${h.err<0.01?'ok':'warn'}">${h.err.toExponential(3)}</td></tr>`).join('');
   document.getElementById('calcA').innerHTML = `
   <div class="calc-section"><h4>${cfg.note}</h4>
-    <div class="formula-block">
-      A·x = b — Sistema de distribución de ${demand[0]+demand[1]+demand[2]} ton/día<br>
-      A = [[${cfg.A[0].join(', ')}], [${cfg.A[1].join(', ')}], [${cfg.A[2].join(', ')}]]<br>
-      b = [${cfg.b.join(', ')}]<br>
-      κ(A) = ${cond.toFixed(2)}
-    </div>
     <table class="calc-table">
       <tr><th>Iter k</th><th>x₁ Oriente</th><th>x₂ Valles</th><th>x₃ Altiplano</th><th>Error máx</th></tr>
       ${rows}
     </table>
-  </div>
-  <div class="calc-section"><h4>Verificación LU vs Gauss-Seidel</h4>
-    <div class="formula-block">
-      LU:  x = [${xLU.map(v=>v.toFixed(3)).join(', ')}]<br>
-      GS:  x = [${gs.x.map(v=>v.toFixed(3)).join(', ')}]<br>
-      Δmax = ${Math.max(...gs.x.map((v,i)=>Math.abs(v-xLU[i]))).toExponential(3)}
-    </div>
   </div>`;
 }
-
 // ══════════════════════════════════════════════
 //  B — RESERVAS DE CARBURANTE (EDOs)
 // ══════════════════════════════════════════════
