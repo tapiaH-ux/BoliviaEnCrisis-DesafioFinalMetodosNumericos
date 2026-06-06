@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bolivia en Crisis — Simulación Numérica 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="brand-dot"></span>
+      <span class="brand-text">Bolivia <em>en Crisis</em></span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" class="nav-link" data-section="inicio">Inicio</a></li>
+      <li><a href="#escenario-a" class="nav-link" data-section="escenario-a">A · Transporte</a></li>
+      <li><a href="#escenario-b" class="nav-link" data-section="escenario-b">B · Reservas</a></li>
+      <li><a href="#escenario-c" class="nav-link" data-section="escenario-c">C · Precios</a></li>
+      <li><a href="#escenario-d" class="nav-link" data-section="escenario-d">D · Familia</a></li>
+      <li><a href="#escenario-e" class="nav-link" data-section="escenario-e">E · Umbrales</a></li>
+      <li><a href="#escenario-f" class="nav-link" data-section="escenario-f">F · Rumores</a></li>
+      <li><a href="#escenario-g" class="nav-link" data-section="escenario-g">G · Conflicto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-noise"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="live-dot"></span>
+      <span>Simulación activa · 6 de junio de 2026 · Bolivia</span>
+    </div>
+    <h1 class="hero-title">Bolivia<br><em>en Crisis</em></h1>
+    <p class="hero-sub">Desde el 1 de mayo de 2026, Bolivia atraviesa su peor crisis social y económica en cuatro décadas. Más de <strong>100 puntos de bloqueo</strong> en todo el país, <strong>500+ cisternas varadas</strong>, precios duplicados y familias que reformularon su dieta. Esta página usa matemática real para mostrar lo que los titulares no miden: la magnitud exacta del colapso.</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">+100</div><div class="hstat-l">puntos de bloqueo activos</div></div>
+      <div class="hstat"><div class="hstat-n">$1.600M</div><div class="hstat-l">pérdidas estimadas USD</div></div>
+      <div class="hstat"><div class="hstat-n">36</div><div class="hstat-l">días efectivos de bloqueo</div></div>
+      <div class="hstat"><div class="hstat-n">2×</div><div class="hstat-l">precio del pollo en La Paz</div></div>
+    </div>
+    <div class="hero-nav-cards">
+      <a href="#escenario-a" class="hnav-card"><span class="hnav-letter">A</span><span class="hnav-label">Red de Transporte</span></a>
+      <a href="#escenario-b" class="hnav-card"><span class="hnav-letter">B</span><span class="hnav-label">Reservas Carburante</span></a>
+      <a href="#escenario-c" class="hnav-card"><span class="hnav-letter">C</span><span class="hnav-label">Precios Alimentos</span></a>
+      <a href="#escenario-d" class="hnav-card"><span class="hnav-letter">D</span><span class="hnav-label">Gasto Familiar</span></a>
+      <a href="#escenario-e" class="hnav-card"><span class="hnav-letter">E</span><span class="hnav-label">Umbrales Críticos</span></a>
+      <a href="#escenario-f" class="hnav-card"><span class="hnav-letter">F</span><span class="hnav-label">Pánico y Rumores</span></a>
+      <a href="#escenario-g" class="hnav-card"><span class="hnav-letter">G</span><span class="hnav-label">Conflicto Social</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ESCENARIO A ═══ -->
+<section class="scenario" id="escenario-a">
+  <div class="scenario-inner">
+
+    <div class="scenario-tag-row">
+      <span class="sc-letter">A</span>
+      <span class="sc-tag">Sistemas de Ecuaciones Lineales · Jacobi · Gauss-Seidel · SOR · LU · Gradiente Conjugado</span>
+    </div>
+
+    <h2 class="sc-title">Red de Transporte y Abastecimiento</h2>
+
+    <div class="sc-context">
+      <p>La red logística de Bolivia depende de tres corredores principales: el eje <strong>Santa Cruz–Cochabamba–La Paz</strong>, que concentra más del 70% del flujo de alimentos y carburantes del país. Desde el 1 de mayo de 2026, los bloqueos organizados por la COB y la Federación Campesina "Túpac Katari" han cortado sistemáticamente estas rutas. Cochabamba se convirtió en el epicentro con <strong>35 puntos de bloqueo activos</strong> al 1 de junio, seguida de La Paz con el cerco a la Plaza Murillo y las carreteras de acceso a la ciudad capital. La Administradora Boliviana de Carreteras (ABC) reportó entre 90 y 100 puntos de corte simultáneos en seis de los nueve departamentos. Más de <strong>500 cisternas con combustible</strong> permanecen varadas en carreteras, y más de 200 empresas operan con serias dificultades para acceder a materias primas. Este modelo simula cómo se redistribuye —o colapsa— el abastecimiento cuando una o más rutas quedan cortadas.</p>
+    </div>
+
+    <div class="sc-questions">
+      <div class="sq-title">Preguntas que responde esta simulación</div>
+      <div class="sq-grid">
+        <div class="sq-item" id="sqA1"><span class="sq-n">1</span><span>¿Cuánto combustible llega a cada zona con y sin bloqueo?</span></div>
+        <div class="sq-item" id="sqA2"><span class="sq-n">2</span><span>¿Qué zona queda más desabastecida cuando cae Cochabamba?</span></div>
+        <div class="sq-item" id="sqA3"><span class="sq-n">3</span><span>¿El sistema es estable o sensible a pequeños cambios en la demanda?</span></div>
+        <div class="sq-item" id="sqA4"><span class="sq-n">4</span><span>¿Qué pasa si se bloquean simultáneamente dos rutas?</span></div>
+        <div class="sq-item" id="sqA5"><span class="sq-n">5</span><span>¿Cuántas iteraciones necesita Gauss-Seidel para converger?</span></div>
+      </div>
+    </div>
+
+    <div class="sc-controls">
+      <div class="sc-controls-label">Selecciona el escenario de bloqueo:</div>
+      <div class="sc-btn-group" id="btnsA">
+        <button class="sc-btn active" data-idx="0" onclick="runA(0)">Sin bloqueo</button>
+        <button class="sc-btn" data-idx="1" onclick="runA(1)">Bloqueo Cochabamba</button>
+        <button class="sc-btn" data-idx="2" onclick="runA(2)">Cerco a La Paz</button>
+        <button class="sc-btn" data-idx="3" onclick="runA(3)">Bloqueo total</button>
+      </div>
+    </div>
+
+    <div class="sc-body">
+      <div class="sc-chart-wrap">
+        <canvas id="chartA"></canvas>
+      </div>
+      <div class="sc-side">
+        <div id="kpiA" class="kpi-stack"></div>
+      </div>
+    </div>
+
+    <div class="answers-box" id="answersA">
+      <div class="answers-box-header">Respuestas a las preguntas del escenario</div>
+      <div class="answers-grid"></div>
+    </div>
+
+    <details class="calc-drop">
+      <summary>Ver cálculos — Gauss-Seidel / LU / Número de condición</summary>
+      <div class="calc-body" id="calcA"></div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══ ESCENARIO B ═══ -->
+<section class="scenario alt" id="escenario-b">
+  <div class="scenario-inner">
+
+    <div class="scenario-tag-row">
+      <span class="sc-letter">B</span>
+      <span class="sc-tag">Ecuaciones Diferenciales Ordinarias · Euler · Heun · Runge-Kutta RK4</span>
+    </div>
+
+    <h2 class="sc-title">Vaciado de Reservas de Carburante</h2>
+
+    <div class="sc-context">
+      <p>El Gobierno boliviano reconoció un <strong>déficit de USD 300 millones</strong> para regularizar el suministro de combustible, y la estatal YPFB admitió necesitar 63 millones de dólares semanales solo para mantener el flujo mínimo. La eliminación de los subsidios a los combustibles —una de las principales críticas al presidente Rodrigo Paz— disparó los precios en surtidores y empujó a un mercado negro que encarece aún más los costos de producción y transporte. El 70% del parque automotor del país estuvo paralizado esperando turno en filas de hasta cinco días. Hospitales reportaron escasez de oxígeno medicinal por falta de transporte. Las reservas en los depósitos de YPFB y distribuidoras regionales se vaciaron aceleradamente: el consumo de pánico duplicó la demanda normal, mientras el bloqueo de las 500+ cisternas redujo la entrada a casi cero. Este modelo simula, hora a hora, cómo evolucionan esas reservas bajo distintas condiciones usando las mismas ecuaciones que usan los ingenieros de planta.</p>
+    </div>
+
+    <div class="sc-questions">
+      <div class="sq-title">Preguntas que responde esta simulación</div>
+      <div class="sq-grid">
+        <div class="sq-item" id="sqB1"><span class="sq-n">1</span><span>¿En cuántos días la reserva llega a nivel crítico (&lt;200 ton)?</span></div>
+        <div class="sq-item" id="sqB2"><span class="sq-n">2</span><span>¿Qué diferencia hay entre Euler, Heun y RK4 en la predicción?</span></div>
+        <div class="sq-item" id="sqB3"><span class="sq-n">3</span><span>¿Qué pasa si se corta completamente el reabastecimiento?</span></div>
+        <div class="sq-item" id="sqB4"><span class="sq-n">4</span><span>¿El pánico de compra puede agotar reservas antes que el bloqueo?</span></div>
+        <div class="sq-item" id="sqB5"><span class="sq-n">5</span><span>¿Qué tasa mínima de entrada evita el colapso?</span></div>
+      </div>
+    </div>
+
+    <div class="sc-controls">
+      <div class="sc-controls-label">Selecciona el escenario de consumo:</div>
+      <div class="sc-btn-group" id="btnsB">
+        <button class="sc-btn active" data-idx="0" onclick="runB(0)">Flujo normal</button>
+        <button class="sc-btn" data-idx="1" onclick="runB(1)">Cisternas bloqueadas −60%</button>
+        <button class="sc-btn" data-idx="2" onclick="runB(2)">Pánico de compra ×2</button>
+        <button class="sc-btn" data-idx="3" onclick="runB(3)">Colapso total</button>
+      </div>
+    </div>
+
+    <div class="sc-body">
+      <div class="sc-chart-wrap">
+        <canvas id="chartB"></canvas>
+      </div>
+      <div class="sc-side">
+        <div id="kpiB" class="kpi-stack"></div>
+      </div>
+    </div>
+
+    <div class="answers-box" id="answersB">
+      <div class="answers-box-header">Respuestas a las preguntas del escenario</div>
+      <div class="answers-grid"></div>
+    </div>
+
+    <details class="calc-drop">
+      <summary>Ver cálculos — Euler / Heun / RK4 comparados</summary>
+      <div class="calc-body" id="calcB"></div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══ ESCENARIO C ═══ -->
+<section class="scenario" id="escenario-c">
+  <div class="scenario-inner">
+
+    <div class="scenario-tag-row">
+      <span class="sc-letter">C</span>
+      <span class="sc-tag">Interpolación · Lagrange · Newton · Splines Cúbicos</span>
+    </div>
+
+    <h2 class="sc-title">Curva de Precios de Alimentos Básicos</h2>
+
+    <div class="sc-context">
+      <p>La inflación alimentaria en Bolivia alcanzó un máximo histórico de <strong>37.79% interanual</strong> en junio de 2025, y los bloqueos de 2026 dispararon los precios muy por encima de esa cifra. El pollo —el alimento proteico más accesible para familias de clase media— pasó a venderse al <strong>doble de su precio habitual</strong> en La Paz. Los huevos, la carne vacuna y las verduras registraron alzas similares. Comunidades indígenas en zonas rurales reportaron abandono total del abastecimiento. Los mercados de La Paz muestran vitrinas vacías en supermercados, algo inédito en la historia reciente del país. Los datos de precios no se registran todos los días: los reportes llegan de forma dispersa, desde distintas fuentes y con días de retraso. La interpolación numérica permite reconstruir la curva completa de precios a partir de esos datos fragmentados, estimando cuánto costó un producto en los días sin reporte oficial, y proyectando la tendencia de las próximas semanas.</p>
+    </div>
+
+    <div class="sc-questions">
+      <div class="sq-title">Preguntas que responde esta simulación</div>
+      <div class="sq-grid">
+        <div class="sq-item" id="sqC1"><span class="sq-n">1</span><span>¿Cuál fue el precio aproximado en días sin dato oficial?</span></div>
+        <div class="sq-item" id="sqC2"><span class="sq-n">2</span><span>¿Cómo se comportó la curva de precios durante el mes de bloqueo?</span></div>
+        <div class="sq-item" id="sqC3"><span class="sq-n">3</span><span>¿Qué producto tuvo el mayor incremento porcentual?</span></div>
+        <div class="sq-item" id="sqC4"><span class="sq-n">4</span><span>¿Qué tan confiable es la interpolación cuando los datos son muy dispersos?</span></div>
+        <div class="sq-item" id="sqC5"><span class="sq-n">5</span><span>¿Cuánto podría costar ese producto en la semana 5 si el bloqueo continúa?</span></div>
+      </div>
+    </div>
+
+    <div class="sc-controls">
+      <div class="sc-controls-label">Selecciona el producto:</div>
+      <div class="sc-btn-group" id="btnsC">
+        <button class="sc-btn active" data-idx="0" onclick="runC(0)">Pollo (Bs/kg)</button>
+        <button class="sc-btn" data-idx="1" onclick="runC(1)">Arroz (Bs/kg)</button>
+        <button class="sc-btn" data-idx="2" onclick="runC(2)">Huevo (Bs/unidad)</button>
+      </div>
+    </div>
+
+    <div class="sc-body">
+      <div class="sc-chart-wrap">
+        <canvas id="chartC"></canvas>
+      </div>
+      <div class="sc-side">
+        <div id="kpiC" class="kpi-stack"></div>
+      </div>
+    </div>
+
+    <div class="answers-box" id="answersC">
+      <div class="answers-box-header">Respuestas a las preguntas del escenario</div>
+      <div class="answers-grid"></div>
+    </div>
+
+    <details class="calc-drop">
+      <summary>Ver cálculos — Lagrange / Newton / Splines cúbicos</summary>
+      <div class="calc-body" id="calcC"></div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══ ESCENARIO D ═══ -->
+<section class="scenario alt" id="escenario-d">
+  <div class="scenario-inner">
+
+    <div class="scenario-tag-row">
+      <span class="sc-letter">D</span>
+      <span class="sc-tag">Integración Numérica · Trapecio · Simpson 1/3 · Simpson 3/8</span>
+    </div>
+
+    <h2 class="sc-title">Costo Acumulado y Pérdida del Poder Adquisitivo Familiar</h2>
+
+    <div class="sc-context">
+      <p>Las familias bolivianas de clase media reformularon su dieta durante el bloqueo. <em>"Lo despreciaba. Ahora nos gusta el arroz con huevo, me está salvando"</em>, declaró Adela Gutiérrez, ama de casa paceña. Gremiales, panificadores, médicos y choferes de La Paz salieron con banderas blancas exigiendo poder trabajar, golpeados por 26 días de conflicto que ya afectaban su sustento. La Federación de Empresas Privadas de Cochabamba (FEPC) estimó pérdidas acumuladas de <strong>Bs 1.932,9 millones</strong> solo en ese departamento en los primeros cinco meses de 2026, superando todo el daño de 2025. El salario mínimo nacional es de Bs 2.500. Este modelo calcula cuánto gastó una familia boliviana comprando su canasta básica día a día desde el inicio del conflicto —con precios en alza constante— y lo compara con lo que habría gastado si los precios se hubieran mantenido estables. La diferencia es la pérdida real del poder adquisitivo.</p>
+    </div>
+
+    <div class="sc-questions">
+      <div class="sq-title">Preguntas que responde esta simulación</div>
+      <div class="sq-grid">
+        <div class="sq-item" id="sqD1"><span class="sq-n">1</span><span>¿Cuánto gastó una familia durante el mes de bloqueo?</span></div>
+        <div class="sq-item" id="sqD2"><span class="sq-n">2</span><span>¿Cuánto hubiera gastado si los precios no subían?</span></div>
+        <div class="sq-item" id="sqD3"><span class="sq-n">3</span><span>¿Cuál fue la pérdida real del poder adquisitivo en bolivianos?</span></div>
+        <div class="sq-item" id="sqD4"><span class="sq-n">4</span><span>¿Qué método de integración da el resultado más preciso?</span></div>
+        <div class="sq-item" id="sqD5"><span class="sq-n">5</span><span>¿En qué día el gasto acumulado supera el salario mínimo boliviano?</span></div>
+      </div>
+    </div>
+
+    <div class="sc-controls">
+      <div class="sc-controls-label">Selecciona el tamaño de familia:</div>
+      <div class="sc-btn-group" id="btnsD">
+        <button class="sc-btn active" data-idx="0" onclick="runD(0)">2 personas</button>
+        <button class="sc-btn" data-idx="1" onclick="runD(1)">4 personas</button>
+        <button class="sc-btn" data-idx="2" onclick="runD(2)">6 personas</button>
+      </div>
+    </div>
+
+    <div class="sc-body">
+      <div class="sc-chart-wrap">
+        <canvas id="chartD"></canvas>
+      </div>
+      <div class="sc-side">
+        <div id="kpiD" class="kpi-stack"></div>
+      </div>
+    </div>
+
+    <div class="answers-box" id="answersD">
+      <div class="answers-box-header">Respuestas a las preguntas del escenario</div>
+      <div class="answers-grid"></div>
+    </div>
+
+    <details class="calc-drop">
+      <summary>Ver cálculos — Trapecio / Simpson 1/3 / Simpson 3/8</summary>
+      <div class="calc-body" id="calcD"></div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══ ESCENARIO E ═══ -->
+<section class="scenario" id="escenario-e">
+  <div class="scenario-inner">
+
+    <div class="scenario-tag-row">
+      <span class="sc-letter">E</span>
+      <span class="sc-tag">Raíces de Ecuaciones · Bisección · Newton-Raphson · Secante</span>
+    </div>
+
+    <h2 class="sc-title">Umbrales Críticos de la Crisis</h2>
+
+    <div class="sc-context">
+      <p>En toda crisis hay puntos de no retorno: el día exacto en que el gasto supera el ingreso, la tasa de reposición mínima que evita el colapso logístico, o el nivel de malestar a partir del cual el conflicto social se masifica de forma irreversible. La CNI proyectó pérdidas superiores a los <strong>USD 1.600 millones</strong> desde el inicio de las protestas. El salario mínimo boliviano es de <strong>Bs 2.500 mensuales</strong>, y con precios duplicados, muchas familias superaron ese umbral en gasto de canasta básica en menos de tres semanas. YPFB reconoció que necesita <strong>63 millones de dólares semanales</strong> solo para mantener el flujo de combustible mínimo. La politóloga Nadia Guevara señaló que existe un punto de inflexión social donde las protestas dejan de ser sectoriales y se convierten en una demanda unificada de renuncia presidencial. Los métodos numéricos de búsqueda de raíces permiten encontrar ese umbral exacto con precisión matemática, comparando la velocidad y estabilidad de tres algoritmos distintos.</p>
+    </div>
+
+    <div class="sc-questions">
+      <div class="sq-title">Preguntas que responde esta simulación</div>
+      <div class="sq-grid">
+        <div class="sq-item" id="sqE1"><span class="sq-n">1</span><span>¿En qué día del bloqueo el gasto familiar supera el salario mínimo (Bs 2.500)?</span></div>
+        <div class="sq-item" id="sqE2"><span class="sq-n">2</span><span>¿Qué tasa de reposición de cisternas equilibra el consumo de La Paz?</span></div>
+        <div class="sq-item" id="sqE3"><span class="sq-n">3</span><span>¿Cuál es el umbral de malestar donde el conflicto se vuelve incontrolable?</span></div>
+        <div class="sq-item" id="sqE4"><span class="sq-n">4</span><span>¿Cuál método converge más rápido: Bisección, Newton-Raphson o Secante?</span></div>
+        <div class="sq-item" id="sqE5"><span class="sq-n">5</span><span>¿Es el sistema sensible a la condición inicial elegida?</span></div>
+      </div>
+    </div>
+
+    <div class="sc-controls">
+      <div class="sc-controls-label">Selecciona el umbral a calcular:</div>
+      <div class="sc-btn-group" id="btnsE">
+        <button class="sc-btn active" data-idx="0" onclick="runE(0)">Gasto vs salario mínimo</button>
+        <button class="sc-btn" data-idx="1" onclick="runE(1)">Equilibrio de cisternas</button>
+        <button class="sc-btn" data-idx="2" onclick="runE(2)">Umbral de masificación</button>
+      </div>
+    </div>
+
+    <div class="sc-body">
+      <div class="sc-chart-wrap">
+        <canvas id="chartE"></canvas>
+      </div>
+      <div class="sc-side">
+        <div id="kpiE" class="kpi-stack"></div>
+      </div>
+    </div>
+
+    <div class="answers-box" id="answersE">
+      <div class="answers-box-header">Respuestas a las preguntas del escenario</div>
+      <div class="answers-grid"></div>
+    </div>
+
+    <details class="calc-drop">
+      <summary>Ver cálculos — Bisección / Newton-Raphson / Secante iteraciones</summary>
+      <div class="calc-body" id="calcE"></div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══ ESCENARIO F ═══ -->
+<section class="scenario alt" id="escenario-f">
+  <div class="scenario-inner">
+
+    <div class="scenario-tag-row">
+      <span class="sc-letter">F</span>
+      <span class="sc-tag">Sistemas Lineales Mal Condicionados · Número de Condición · Perturbación</span>
+    </div>
+
+    <h2 class="sc-title">Rumores de Desabastecimiento y Pánico en la Red</h2>
+
+    <div class="sc-context">
+      <p>El 5 de mayo circuló en redes sociales el rumor de que "no habría diésel en La Paz en 48 horas". Las filas en los surtidores se triplicaron en pocas horas. Conductores se pelearon a puñetazos en las estaciones de servicio. Los supermercados vieron filas que doblaban la manzana. La escasez que se temía se volvió real —no porque el combustible se hubiera acabado, sino porque el pánico aceleró el consumo hasta vaciar los depósitos. Este es el efecto de profecía autocumplida: el sistema de distribución, que en condiciones normales es estable, se vuelve matemáticamente inestable cuando una pequeña perturbación en la información genera un cambio desproporcionado en la demanda. Un sistema lineal <em>mal condicionado</em> es aquel donde un cambio pequeño en los datos de entrada produce un cambio enorme en la solución. El número de condición mide exactamente eso: cuánto amplifica el sistema cualquier rumor o perturbación externa.</p>
+    </div>
+
+    <div class="sc-questions">
+      <div class="sq-title">Preguntas que responde esta simulación</div>
+      <div class="sq-grid">
+        <div class="sq-item" id="sqF1"><span class="sq-n">1</span><span>¿Un rumor del 5% en la demanda cuánto cambia la distribución real?</span></div>
+        <div class="sq-item" id="sqF2"><span class="sq-n">2</span><span>¿La solución cambia poco o demasiado ante perturbaciones?</span></div>
+        <div class="sq-item" id="sqF3"><span class="sq-n">3</span><span>¿El sistema es estable o mal condicionado?</span></div>
+        <div class="sq-item" id="sqF4"><span class="sq-n">4</span><span>¿Qué zona o mercado se vuelve más vulnerable al pánico?</span></div>
+        <div class="sq-item" id="sqF5"><span class="sq-n">5</span><span>¿Cómo afecta el rumor acumulado al abastecimiento total del mes?</span></div>
+      </div>
+    </div>
+
+    <div class="sc-controls">
+      <div class="sc-controls-label">Selecciona el nivel de rumor:</div>
+      <div class="sc-btn-group" id="btnsF">
+        <button class="sc-btn active" data-idx="0" onclick="runF(0)">Sin rumor</button>
+        <button class="sc-btn" data-idx="1" onclick="runF(1)">"Se acaba el diésel" (5 mayo)</button>
+        <button class="sc-btn" data-idx="2" onclick="runF(2)">"Bloqueo indefinido" (15 mayo)</button>
+        <button class="sc-btn" data-idx="3" onclick="runF(3)">Pánico total (junio)</button>
+      </div>
+    </div>
+
+    <div class="sc-body">
+      <div class="sc-chart-wrap">
+        <canvas id="chartF"></canvas>
+      </div>
+      <div class="sc-side">
+        <div id="kpiF" class="kpi-stack"></div>
+      </div>
+    </div>
+
+    <div class="answers-box" id="answersF">
+      <div class="answers-box-header">Respuestas a las preguntas del escenario</div>
+      <div class="answers-grid"></div>
+    </div>
+
+    <details class="calc-drop">
+      <summary>Ver cálculos — Número de condición κ(A) / Análisis de perturbación</summary>
+      <div class="calc-body" id="calcF"></div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══ ESCENARIO G ═══ -->
+<section class="scenario" id="escenario-g">
+  <div class="scenario-inner">
+
+    <div class="scenario-tag-row">
+      <span class="sc-letter">G</span>
+      <span class="sc-tag">Ecuaciones Diferenciales · Modelo N-M-D · Heun · RK4</span>
+    </div>
+
+    <h2 class="sc-title">Difusión del Descontento Social — Modelo N-M-D</h2>
+
+    <div class="sc-context">
+      <p>El conflicto boliviano comenzó el 1 de mayo con una marcha de comunidades indígenas de Beni y Pando hacia La Paz, exigiendo la derogación de la Ley 1720 sobre tierras comunitarias. En días, se sumaron la Central Obrera Boliviana (COB), mineros artesanales, gremialistas, transportistas y panificadores. Cada sector con sus propios reclamos, pero convergiendo en una sola consigna: la renuncia del presidente Rodrigo Paz. La Conferencia Episcopal Boliviana intentó mediar el 25 de mayo. El 20 de mayo, Paz creó el Consejo Económico y Social (CES) para el diálogo, pero la COB exigió como condición previa que se levanten las órdenes de arresto contra sus dirigentes. Sin mediadores efectivos, el modelo matemático predice que los ciudadanos neutrales —los que solo quieren trabajar— terminan siendo absorbidos por el conflicto. Esta simulación usa el mismo tipo de ecuaciones que se aplican para modelar pandemias, pero en lugar de virus, modela el contagio del descontento social.</p>
+    </div>
+
+    <div class="sc-questions">
+      <div class="sq-title">Preguntas que responde esta simulación</div>
+      <div class="sq-grid">
+        <div class="sq-item" id="sqG1"><span class="sq-n">1</span><span>¿El conflicto tiende a estabilizarse o a masificarse?</span></div>
+        <div class="sq-item" id="sqG2"><span class="sq-n">2</span><span>¿Qué pasa si la Conferencia Episcopal logra mediar efectivamente?</span></div>
+        <div class="sq-item" id="sqG3"><span class="sq-n">3</span><span>¿Qué pasa si la COB rechaza el diálogo y no hay mediadores?</span></div>
+        <div class="sq-item" id="sqG4"><span class="sq-n">4</span><span>¿Cuántos días tarda el conflicto en alcanzar su pico máximo?</span></div>
+        <div class="sq-item" id="sqG5"><span class="sq-n">5</span><span>¿Qué parámetros hacen que el conflicto se vuelva irreversible?</span></div>
+      </div>
+    </div>
+
+    <div class="sc-controls">
+      <div class="sc-controls-label">Selecciona el escenario político:</div>
+      <div class="sc-btn-group" id="btnsG">
+        <button class="sc-btn active" data-idx="0" onclick="runG(0)">Mediación activa (Iglesia)</button>
+        <button class="sc-btn" data-idx="1" onclick="runG(1)">Sin diálogo (COB rechaza)</button>
+        <button class="sc-btn" data-idx="2" onclick="runG(2)">Escalada — renuncia o nada</button>
+      </div>
+    </div>
+
+    <div class="sc-body">
+      <div class="sc-chart-wrap">
+        <canvas id="chartG"></canvas>
+      </div>
+      <div class="sc-side">
+        <div id="kpiG" class="kpi-stack"></div>
+      </div>
+    </div>
+
+    <div class="answers-box" id="answersG">
+      <div class="answers-box-header">Respuestas a las preguntas del escenario</div>
+      <div class="answers-grid"></div>
+    </div>
+
+    <details class="calc-drop">
+      <summary>Ver cálculos — Heun / RK4 · Sistema N'M'D' completo</summary>
+      <div class="calc-body" id="calcG"></div>
+    </details>
+
+  </div>
+</section>
+
+<!-- CONCLUSIONES -->
+<section class="conclusions" id="conclusiones">
+  <div class="conc-inner">
+    <div class="conc-tag">Conclusiones del modelo</div>
+    <h2>Lo que dice la matemática sobre la crisis boliviana</h2>
+    <div class="conc-grid">
+      <div class="conc-card">
+        <div class="conc-icon">⬡</div>
+        <h3>La red de distribución es frágil</h3>
+        <p>El sistema de abastecimiento boliviano es altamente sensible a la pérdida de rutas clave. Cochabamba, como nodo central, concentra demasiado flujo. Un bloqueo allí afecta al país entero.</p>
+      </div>
+      <div class="conc-card">
+        <div class="conc-icon">⬡</div>
+        <h3>El pánico es más rápido que el bloqueo</h3>
+        <p>El modelo de reservas muestra que el consumo de pánico vacía los depósitos antes que el bloqueo físico. Controlar la información es tan urgente como abrir las rutas.</p>
+      </div>
+      <div class="conc-card">
+        <div class="conc-icon">⬡</div>
+        <h3>El costo familiar supera al salario mínimo</h3>
+        <p>La integración numérica confirma que una familia de 4 personas supera el salario mínimo (Bs 2.500) en gasto de canasta básica antes del día 22 del bloqueo con precios al doble.</p>
+      </div>
+      <div class="conc-card">
+        <div class="conc-icon">⬡</div>
+        <h3>Sin mediadores, el conflicto no se detiene</h3>
+        <p>El modelo N-M-D demuestra que sin actores de diálogo efectivos, los ciudadanos neutrales se convierten en manifestantes activos en menos de 10 días bajo condiciones de alta tensión.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Bolivia <em>en Crisis</em> · Simulación Numérica 2026</div>
+    <p class="footer-note">Proyecto académico de Métodos Numéricos. Los datos son aproximaciones basadas en reportes públicos de la ABC, FEPC, CNI, YPFB e Infobae/Reuters/EFE (mayo–junio 2026). Los modelos matemáticos son ilustrativos y no constituyen análisis político.</p>
+    <div class="footer-tags">
+      <span>Jacobi</span><span>Gauss-Seidel</span><span>SOR</span><span>LU</span><span>Grad. Conjugado</span>
+      <span>Euler</span><span>Heun</span><span>RK4</span><span>Lagrange</span><span>Newton</span>
+      <span>Splines</span><span>Trapecio</span><span>Simpson 1/3</span><span>Simpson 3/8</span>
+      <span>Bisección</span><span>Newton-Raphson</span><span>Secante</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
